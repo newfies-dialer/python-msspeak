@@ -1,5 +1,8 @@
 *.py[cod]
 
+# Do not upload
+private*
+
 # C extensions
 *.so
 
