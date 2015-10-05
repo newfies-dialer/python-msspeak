@@ -1,6 +1,5 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-
+#
 # mstranslate.py - Python wrapper for text-to-speech synthesis with Microsoft Translate
 # Copyright (C) 2015 Arezqui Belaid <areski@gmail.com> and Joshua Patten <joshpatten@gmail.com>
 #
@@ -26,7 +25,6 @@
 
 import sys
 import os.path
-from optparse import OptionParser
 try:
     import simplejson as json
 except ImportError:
@@ -160,50 +158,3 @@ class MSTranslate(object):
                 print 'Please check you have permission to write to this file.'
                 sys.exit(3)
             return self.filename
-
-
-def _main():
-    """
-    Parse options and process text to Microsoft Translate
-    """
-
-    # Parse arguments
-    parser = OptionParser()
-    parser.add_option('-n', '--applogin', dest='applogin',
-                      help='applicationlogin for authentication')
-    parser.add_option('-p', '--password', dest='password',
-                      help='Password for authentication')
-    parser.add_option('-t', '--text', dest='text',
-                      help='text to synthesize')
-    parser.add_option('-l', '--language', dest='language',
-                      help='language')
-    parser.add_option('-d', '--directory', dest='directory',
-                      help='directory to store the file')
-    (options, args) = parser.parse_args()
-    applogin = options.applogin
-    password = options.password
-    text = options.text
-    language = options.language
-    directory = options.directory
-
-    # Perform sanity checks on options
-    validate_options(applogin, password, text)
-
-    if not directory:
-        directory = DIRECTORY
-
-    url = SERVICE_URL
-
-    if not language:
-        language = LANGUAGE
-
-    tts_mstranslate = MSTranslate(applogin, password, url, directory)
-    tts_mstranslate.set_cache(False)
-    tts_mstranslate.prepare(text, language)
-    output_filename = tts_mstranslate.run()
-
-    print 'Recorded TTS to %s%s' % (directory, output_filename)
-
-
-if __name__ == '__main__':
-    _main()

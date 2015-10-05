@@ -1,11 +1,21 @@
 ==================
-python-mstranslate
+Python MStranslate
 ==================
 
 :Author: Arezqui Belaid and Joshua Patten
 :Description: Python wrapper for text-to-speech synthesis with Microsoft Translate
+:Documentation: RTD https://python-mstranslate.readthedocs.org
 :Contributors: `list of contributors <https://github.com/newfies-dialer/python-mstranslate/graphs/contributors>`_
 :License: MIT
+
+.. image:: https://img.shields.io/travis/newfies-dialer/python-mstranslate.svg
+        :target: https://travis-ci.org/newfies-dialer/python-mstranslate
+
+.. image:: https://img.shields.io/pypi/v/python-mstranslate.svg
+        :target: https://pypi.python.org/pypi/python-mstranslate
+
+
+Text-To-Speech with MStranslate
 
 
 Python Microsoft Translate Text2Speech Wrapper
@@ -86,6 +96,12 @@ Source download
 The source code is currently available on github. Fork away!
 
 https://github.com/newfies-dialer/python-mstranslate
+
+
+Features
+--------
+
+* use python-request
 
 
 .. _Microsoft Translate: http://www.microsoft.com/en-us/translator/translatorapi.aspx
