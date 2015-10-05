@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # mstranslate.py - Python wrapper for text-to-speech synthesis with Microsoft Translate
-# Copyright (C) 2012 Arezqui Belaid <areski@gmail.com> and Joshua Patten <joshpatten@gmail.com>
+# Copyright (C) 2015 Arezqui Belaid <areski@gmail.com> and Joshua Patten <joshpatten@gmail.com>
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation files
@@ -46,8 +46,8 @@ else:
 # Version Python-MSTranslate
 __version__ = '0.1'
 
-APPLICATION_LOGIN = 'EVAL_XXXXXXX'
-APPLICATION_PASSWORD = 'XXXXXXXX'
+CLIENT_ID = 'XXXXXXXXXXXX'
+CLIENT_SECRET = 'YYYYYYYYYYYYYY'
 
 SERVICE_URL = 'http://api.microsofttranslator.com/V2/Http.svc/Speak'
 LANGUAGE = 'en'
@@ -59,18 +59,17 @@ USAGE = \
 
 
 def validate_options(applicationlogin, password, text):
-    """Perform sanity checks on threshold values"""
-
+    """
+    Perform sanity checks on threshold values
+    """
     if not applicationlogin or len(applicationlogin) == 0:
         print 'Error: Warning the option applicationlogin should contain a string.'
         print USAGE
         sys.exit(3)
-
     if not password or len(password) == 0:
         print 'Error: Warning the option password should contain a string.'
         print USAGE
         sys.exit(3)
-
     if not text or len(text) == 0:
         print 'Error: Warning the option text should contain a string.'
         print USAGE
@@ -80,25 +79,26 @@ def validate_options(applicationlogin, password, text):
 class MSTranslate(object):
     # Properties
     TTS_ENGINE = None
-    APPLICATION_LOGIN = None
-    APPLICATION_PASSWORD = None
+    CLIENT_ID = None
+    CLIENT_SECRET = None
     SERVICE_URL = None
     DIRECTORY = ''
-
     data = {}
     filename = None
     cache = True
 
-    def __init__(self, application_login, application_password, service_url, directory=''):
+    def __init__(self, CLIENT_ID, CLIENT_SECRET, service_url, directory=''):
         """construct Microsoft Translate TTS"""
         self.TTS_ENGINE = 'MSTRANSLATE'
-        self.APPLICATION_LOGIN = application_login
-        self.APPLICATION_PASSWORD = application_password
+        self.CLIENT_ID = CLIENT_ID
+        self.CLIENT_SECRET = CLIENT_SECRET
         self.SERVICE_URL = service_url
         self.DIRECTORY = directory
 
     def prepare(self, textstr, lang):
-        """Prepare Microsoft Translate TTS"""
+        """
+        Prepare Microsoft Translate TTS
+        """
         oauth_url = 'https://datamarket.accesscontrol.windows.net/v2/OAuth2-13'
         lang = lang.lower()
         concatkey = '%s-%s' % (textstr, lang)
@@ -113,8 +113,8 @@ class MSTranslate(object):
         self.filename = '%s-%s.wav' % (key, lang)
         # Get access token
         tokenargs = {
-            'client_id': self.APPLICATION_LOGIN,
-            'client_secret': self.APPLICATION_PASSWORD,
+            'client_id': self.CLIENT_ID,
+            'client_secret': self.CLIENT_SECRET,
             'scope': 'http://api.microsofttranslator.com',
             'grant_type': 'client_credentials'
         }
@@ -131,11 +131,12 @@ class MSTranslate(object):
         """
         Enable Cache of file, if files already stored return this filename
         """
-
         self.cache = value
 
     def run(self):
-        """run will call Microsoft Translate API and and produce audio"""
+        """
+        run will call Microsoft Translate API and and produce audio
+        """
 
         # check if file exists
         fileloc = self.DIRECTORY + self.filename

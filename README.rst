@@ -1,40 +1,39 @@
-==============
+==================
 python-mstranslate
-==============
+==================
 
 :Author: Arezqui Belaid and Joshua Patten
 :Description: Python wrapper for text-to-speech synthesis with Microsoft Translate
-
+:Contributors: `list of contributors <https://github.com/newfies-dialer/python-mstranslate/graphs/contributors>`_
+:License: MIT
 
 
 Python Microsoft Translate Text2Speech Wrapper
-======================
+----------------------------------------------
 
 python-mstranslate is a library to produce a text-to-speech file using `Microsoft Translate`_ web services.
 
-.. _Microsoft Translate: http://www.microsoft.com/en-us/translator/translatorapi.aspx
-
 In order to utilize this service you must sign up for Microsoft Translator service and register an application. More information on creating a Microsoft account is located at the `getting started with Microsoft Translator API`_ page.
 
-.. _getting started with Microsoft Translator API: https://www.microsoft.com/en-us/translator/getstarted.aspx
 
 Quickstart
-==========
+----------
+
 A quick-and-dirty script to utilize the python-mstranslate library.
 
-APPLICATION_LOGIN is the Microsoft Translator API client_id, and APPLICATION_PASSWORD is the Microsoft Translator API client_secret:
+CLIENT_ID is the Microsoft Translator API client_id, and CLIENT_SECRET is the Microsoft Translator API client_secret:
 ::
 
     import mstranslate
-    
-    APPLICATION_LOGIN = 'EVAL_XXXXXXX'
-    APPLICATION_PASSWORD = 'XXXXXXXX'
+
+    CLIENT_ID = 'XXXXXXXXXXXX'
+    CLIENT_SECRET = 'YYYYYYYYYYYYYY'
     SERVICE_URL = 'http://api.microsofttranslator.com/V2/Http.svc/Speak'
-    
-    tts_mstranslate = mstranslate.MSTranslate(APPLICATION_LOGIN, APPLICATION_PASSWORD, SERVICE_URL, '/tmp/')
+
+    tts_mstranslate = mstranslate.MSTranslate(CLIENT_ID, CLIENT_SECRET, SERVICE_URL, '/tmp/')
     tts_mstranslate.prepare("This is the text I will speak to you", "EN")
     output_filename = tts_mstranslate.run()
-    
+
     print "Recorded TTS to %s" % output_filename
 
 
@@ -52,10 +51,6 @@ Install, upgrade and uninstall python-mstranslate.py with these commands::
   $ sudo pip install python-mstranslate
   $ sudo pip install --upgrade python-mstranslate
   $ sudo pip uninstall python-mstranslate
-
-Or if you don't have `pip`::
-
-  $ sudo easy_install python-mstranslate
 
 
 Example usage and output
@@ -93,3 +88,6 @@ The source code is currently available on github. Fork away!
 
 https://github.com/newfies-dialer/python-mstranslate
 
+
+.. _Microsoft Translate: http://www.microsoft.com/en-us/translator/translatorapi.aspx
+.. _getting started with Microsoft Translator API: https://www.microsoft.com/en-us/translator/getstarted.aspx
