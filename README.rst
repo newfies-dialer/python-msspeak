@@ -66,8 +66,7 @@ Example usage and output
 Feedback
 --------
 
-Your feedback is more than welcome. Write email to
-areski@gmail.com or post bugs and feature requests on github:
+Feedback are more than welcome, post bugs and feature requests on github:
 
 http://github.com/newfies-dialer/python-mstranslate/issues
 
