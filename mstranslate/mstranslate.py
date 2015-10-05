@@ -52,27 +52,6 @@ LANGUAGE = 'en'
 QUALITY = '22k'  # 22k, 8k, 8ka, 8kmu
 DIRECTORY = '/tmp/'
 
-USAGE = \
-    """\nUsage: mstranslate.py -n <applicationlogin> -p <password> -t <text> [-l <language>] [-d <directory>] [-h]"""
-
-
-def validate_options(applicationlogin, password, text):
-    """
-    Perform sanity checks on threshold values
-    """
-    if not applicationlogin or len(applicationlogin) == 0:
-        print 'Error: Warning the option applicationlogin should contain a string.'
-        print USAGE
-        sys.exit(3)
-    if not password or len(password) == 0:
-        print 'Error: Warning the option password should contain a string.'
-        print USAGE
-        sys.exit(3)
-    if not text or len(text) == 0:
-        print 'Error: Warning the option text should contain a string.'
-        print USAGE
-        sys.exit(3)
-
 
 class MSTranslate(object):
     # Properties

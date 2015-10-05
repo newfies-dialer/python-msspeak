@@ -23,9 +23,32 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import sys
 from optparse import OptionParser
-from mstranslate import validate_options, MSTranslate
+from mstranslate import MSTranslate
 from mstranslate import DIRECTORY, SERVICE_URL, LANGUAGE
+
+
+USAGE = \
+    """\nUsage: mstranslate --client_id=<client_id> --client_secret=<client_secret> -t <text> [-l <language>] [-d <directory>] [-h]"""
+
+
+def validate_options(client_id, client_secret, text):
+    """
+    Perform sanity checks on threshold values
+    """
+    if not client_id or len(client_id) == 0:
+        print 'Error: Warning the option client_id should contain a string.'
+        print USAGE
+        sys.exit(3)
+    if not client_secret or len(client_secret) == 0:
+        print 'Error: Warning the option client_secret should contain a string.'
+        print USAGE
+        sys.exit(3)
+    if not text or len(text) == 0:
+        print 'Error: Warning the option text should contain a string.'
+        print USAGE
+        sys.exit(3)
 
 
 def main():
@@ -35,10 +58,10 @@ def main():
 
     # Parse arguments
     parser = OptionParser()
-    parser.add_option('-n', '--applogin', dest='applogin',
-                      help='applicationlogin for authentication')
-    parser.add_option('-p', '--password', dest='password',
-                      help='Password for authentication')
+    parser.add_option('-n', '--client_id', dest='client_id',
+                      help='client_id for authentication')
+    parser.add_option('-s', '--client_secret', dest='client_secret',
+                      help='client_secret for authentication')
     parser.add_option('-t', '--text', dest='text',
                       help='text to synthesize')
     parser.add_option('-l', '--language', dest='language',
@@ -46,14 +69,14 @@ def main():
     parser.add_option('-d', '--directory', dest='directory',
                       help='directory to store the file')
     (options, args) = parser.parse_args()
-    applogin = options.applogin
-    password = options.password
+    client_id = options.client_id
+    client_secret = options.client_secret
     text = options.text
     language = options.language
     directory = options.directory
 
     # Perform sanity checks on options
-    validate_options(applogin, password, text)
+    validate_options(client_id, client_secret, text)
 
     if not directory:
         directory = DIRECTORY
@@ -63,7 +86,7 @@ def main():
     if not language:
         language = LANGUAGE
 
-    tts_mstranslate = MSTranslate(applogin, password, url, directory)
+    tts_mstranslate = MSTranslate(client_id, client_secret, url, directory)
     tts_mstranslate.set_cache(False)
     tts_mstranslate.prepare(text, language)
     output_filename = tts_mstranslate.run()

@@ -58,19 +58,26 @@ Installation
 
 Install, upgrade and uninstall python-mstranslate.py with these commands::
 
-  $ sudo pip install python-mstranslate
-  $ sudo pip install --upgrade python-mstranslate
-  $ sudo pip uninstall python-mstranslate
+    $ pip install python-mstranslate
+    $ pip install --upgrade python-mstranslate
+    $ pip uninstall python-mstranslate
 
 
 Example usage and output
 ------------------------
 
+Usage:
 ::
+    $ python-mstranslate --client_id=<client_id> --client_secret=<client_secret> -t <text> [-d <directory>] [-url <service_url>] [-h]
 
-  $ Usage: python-mstranslate -applogin <applicationlogin> -p <password> -t <text> [-d <directory>] [-url <service_url>] [-h]
 
-  $ Output : Recorded TTS to /tmp/MSTRANSLATE-8895934760117809679-EN.mp3
+Example:
+::
+    $ mstranslate --client_id=XXXXXXXXX --client_secret=YYYYYYYYYY -t "Salut, Vous vous appelez comment?" -l fr
+
+Output :
+::
+    $ Recorded TTS to /tmp/MSTRANSLATE-8895934760117809679-fr.mp3
 
 
 Feedback
@@ -98,10 +105,10 @@ The source code is currently available on github. Fork away!
 https://github.com/newfies-dialer/python-mstranslate
 
 
-Features
+TODO
 --------
 
-* use python-request
+* replace urllib by python-request
 
 
 .. _Microsoft Translate: http://www.microsoft.com/en-us/translator/translatorapi.aspx
