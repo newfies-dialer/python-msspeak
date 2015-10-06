@@ -1,9 +1,9 @@
-==================
-Python MStranslate
-==================
+=========================================================
+MSTranslator - Microsoft Translator API module for Python
+=========================================================
 
 :Author: Arezqui Belaid and Joshua Patten
-:Description: Python wrapper for text-to-speech synthesis with Microsoft Translate
+:Description: Microsoft Translator API module for Python
 :Documentation: RTD https://python-mstranslate.readthedocs.org
 :Contributors: `list of contributors <https://github.com/newfies-dialer/python-mstranslate/graphs/contributors>`_
 :License: MIT
@@ -15,13 +15,36 @@ Python MStranslate
         :target: https://pypi.python.org/pypi/python-mstranslate
 
 
-Text-To-Speech with MStranslate
+Microsoft Translator Documentation: http://msdn.microsoft.com/en-us/library/dd576287.aspx
 
 
-Python Microsoft Translate Text2Speech Wrapper
-----------------------------------------------
+API Methods
+-----------
 
-python-mstranslate is a library to produce a text-to-speech file using `Microsoft Translate`_ web services.
+Microsoft Translator API Reference](http://msdn.microsoft.com/en-us/library/ff512404.aspx)
+
+  * addTranslation (not implemented)
+  * addTranslationArray (not implemented)
+  * breakSentences (not working)
+  * detect (not implemented)
+  * detectArray (not implemented)
+  * getAppIdToken (not implemented) This is a legacy, replaced by
+    Access Token
+  * getLanguageNames (not implemented)
+  * getLanguagesForSpeak (not implemented)
+  * getLanguagesForTranslate (not implemented)
+  * getTranslations (not implemented)
+  * getTranslationsArray (not implemented)
+  * speak: implemented
+  * translate: implemented
+  * translateArray (not implemented)
+  * translateArray2 (not implemented)
+
+
+Python Microsoft Translate API Helper
+-------------------------------------
+
+python-mstranslate is a library to help on translation and produce a text-to-speech file using `Microsoft Translate`_ web services.
 
 In order to utilize this service you must sign up for Microsoft Translator service and register an application. More information on creating a Microsoft account is located at the `getting started with Microsoft Translator API`_ page.
 
