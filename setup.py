@@ -15,7 +15,8 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read().replace('.. :changelog:', '')
 
 requirements = [
-    # TODO: put package requirements here
+    "requests==2.7.0",
+    "mstranslator==0.2.5",
 ]
 
 test_requirements = [
@@ -39,7 +40,7 @@ setup(
     install_requires=requirements,
     license="MIT",
     zip_safe=False,
-    keywords='mstranslate',
+    keywords='mstranslator,tts,speech',
     entry_points={
         'console_scripts': [
             'mstranslate = mstranslate.command_line:main',

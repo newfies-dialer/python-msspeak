@@ -10,20 +10,7 @@ Tests for `python-mstranslate` module.
 
 import unittest
 
-from mstranslate import mstranslate
 from mstranslate.command_line import main
-
-
-class TestMstranslate(unittest.TestCase):
-
-    def setUp(self):
-        pass
-
-    def test_something(self):
-        pass
-
-    def tearDown(self):
-        pass
 
 
 class TestConsole(unittest.TestCase):

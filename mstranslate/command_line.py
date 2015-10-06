@@ -26,9 +26,10 @@
 import sys
 from optparse import OptionParser
 from mstranslate import MSTranslate
-from mstranslate import service_url
-from mstranslate import language as def_language
-from mstranslate import directory as def_directory
+
+
+default_language = "en"
+default_directory = "/tmp/"
 
 
 USAGE = \
@@ -81,17 +82,14 @@ def main():
     validate_options(client_id, client_secret, text)
 
     if not directory:
-        directory = def_directory
-
-    url = service_url
+        directory = default_directory
 
     if not language:
-        language = def_language
+        language = default_language
 
-    tts_mstranslate = MSTranslate(client_id, client_secret, url, directory)
+    tts_mstranslate = MSTranslate(client_id, client_secret, directory)
     tts_mstranslate.set_cache(False)
-    tts_mstranslate.prepare(text, language)
-    output_filename = tts_mstranslate.run()
+    output_filename = tts_mstranslate.speak(text, language)
 
     print 'Recorded TTS to %s%s' % (directory, output_filename)
 

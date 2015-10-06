@@ -1,6 +1,6 @@
-=========================================================
-MSTranslator - Microsoft Translator API module for Python
-=========================================================
+===============================================
+MSSpeak - Microsoft Translator Speak for Python
+===============================================
 
 :Author: Arezqui Belaid and Joshua Patten
 :Description: Microsoft Translator API module for Python
@@ -18,33 +18,10 @@ MSTranslator - Microsoft Translator API module for Python
 Microsoft Translator Documentation: http://msdn.microsoft.com/en-us/library/dd576287.aspx
 
 
-API Methods
------------
+Python Microsoft Speak
+----------------------
 
-Microsoft Translator API Reference](http://msdn.microsoft.com/en-us/library/ff512404.aspx)
-
-  * addTranslation (not implemented)
-  * addTranslationArray (not implemented)
-  * breakSentences (not working)
-  * detect (not implemented)
-  * detectArray (not implemented)
-  * getAppIdToken (not implemented) This is a legacy, replaced by
-    Access Token
-  * getLanguageNames (not implemented)
-  * getLanguagesForSpeak (not implemented)
-  * getLanguagesForTranslate (not implemented)
-  * getTranslations (not implemented)
-  * getTranslationsArray (not implemented)
-  * speak: implemented
-  * translate: implemented
-  * translateArray (not implemented)
-  * translateArray2 (not implemented)
-
-
-Python Microsoft Translate API Helper
--------------------------------------
-
-python-mstranslate is a library to help on translation and produce a text-to-speech file using `Microsoft Translate`_ web services.
+python-mstranslate is a library to produce a text-to-speech file using `Microsoft Translate`_ web services.
 
 In order to utilize this service you must sign up for Microsoft Translator service and register an application. More information on creating a Microsoft account is located at the `getting started with Microsoft Translator API`_ page.
 
@@ -128,10 +105,35 @@ The source code is currently available on github. Fork away!
 https://github.com/newfies-dialer/python-mstranslate
 
 
-TODO
---------
+API Methods
+-----------
 
-* replace urllib by python-request
+Microsoft Translator API Reference](http://msdn.microsoft.com/en-us/library/ff512404.aspx)
+
+  * addTranslation (not implemented)
+  * addTranslationArray (not implemented)
+  * breakSentences (not working)
+  * detect (not implemented)
+  * detectArray (not implemented)
+  * getAppIdToken (not implemented) This is a legacy, replaced by
+    Access Token
+  * getLanguageNames (not implemented)
+  * getLanguagesForSpeak (not implemented)
+  * getLanguagesForTranslate (not implemented)
+  * getTranslations (not implemented)
+  * getTranslationsArray (not implemented)
+  * speak: implemented
+  * translate (not implemented)
+  * translateArray (not implemented)
+  * translateArray2 (not implemented)
+
+
+Other library
+-------------
+
+* Javascript: https://github.com/nanek/mstranslator
+* Python: https://pypi.python.org/pypi/mstranslator
+* Python: https://github.com/bebound/Python-Microsoft-Translate-API
 
 
 .. _Microsoft Translate: http://www.microsoft.com/en-us/translator/translatorapi.aspx
