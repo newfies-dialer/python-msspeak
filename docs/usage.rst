@@ -2,6 +2,6 @@
 Usage
 ========
 
-To use Python MStranslate in a project::
+To use Python MSSpeak in a project::
 
-    import python-mstranslate
+    import python-msspeak

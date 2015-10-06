@@ -46,7 +46,7 @@ clean-test:
 	rm -fr htmlcov/
 
 lint:
-	flake8 python-mstranslate tests
+	flake8 python-msspeak tests
 
 test:
 	python setup.py test
@@ -55,15 +55,15 @@ test-all:
 	tox
 
 coverage:
-	coverage run --source python-mstranslate setup.py test
+	coverage run --source python-msspeak setup.py test
 	coverage report -m
 	coverage html
 	$(BROWSER) htmlcov/index.html
 
 docs:
-	rm -f docs/python-mstranslate.rst
+	rm -f docs/python-msspeak.rst
 	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ python-mstranslate
+	sphinx-apidoc -o docs/ python-msspeak
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	$(BROWSER) docs/_build/html/index.html

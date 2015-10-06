@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# mstranslate.py - Python wrapper for text-to-speech synthesis with Microsoft Translate
+# msspeak.py - Python wrapper for text-to-speech synthesis with Microsoft Translate
 # Copyright (C) 2015 Arezqui Belaid <areski@gmail.com> and Joshua Patten <joshpatten@gmail.com>
 #
 # Permission is hereby granted, free of charge, to any person
@@ -30,7 +30,7 @@ import os.path
 __version__ = '0.1'
 
 
-class MSTranslate(object):
+class MSSpeak(object):
 
     cache = True
 

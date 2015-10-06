@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# mstranslate.py - Python wrapper for text-to-speech synthesis with Microsoft Translate
+# msspeak.py - Python wrapper for text-to-speech synthesis with Microsoft Translate
 # Copyright (C) 2015 Arezqui Belaid <areski@gmail.com> and Joshua Patten <joshpatten@gmail.com>
 #
 # Permission is hereby granted, free of charge, to any person
@@ -25,7 +25,7 @@
 
 import sys
 from optparse import OptionParser
-from mstranslate import MSTranslate
+from msspeak import MSSpeak
 
 
 default_language = "en"
@@ -33,7 +33,7 @@ default_directory = "/tmp/"
 
 
 USAGE = \
-    """\nUsage: mstranslate --client_id=<client_id> --client_secret=<client_secret> -t <text> [-l <language>] [-d <directory>] [-h]"""
+    """\nUsage: msspeak --client_id=<client_id> --client_secret=<client_secret> -t <text> [-l <language>] [-d <directory>] [-h]"""
 
 
 def validate_options(client_id, client_secret, text):
@@ -87,9 +87,9 @@ def main():
     if not language:
         language = default_language
 
-    tts_mstranslate = MSTranslate(client_id, client_secret, directory)
-    tts_mstranslate.set_cache(False)
-    output_filename = tts_mstranslate.speak(text, language)
+    tts_msspeak = MSSpeak(client_id, client_secret, directory)
+    tts_msspeak.set_cache(False)
+    output_filename = tts_msspeak.speak(text, language)
 
     print 'Recorded TTS to %s%s' % (directory, output_filename)
 

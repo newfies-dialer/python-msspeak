@@ -24,18 +24,18 @@ test_requirements = [
 ]
 
 setup(
-    name='python-mstranslate',
+    name='python-msspeak',
     version='0.1.0',
-    description="Text-To-Speech with MStranslate",
+    description="Text-To-Speech with MSSpeak",
     long_description=readme + '\n\n' + history,
     author="Areski Belaid",
     author_email='areski@gmail.com',
-    url='https://github.com/newfies-dialer/python-mstranslate',
+    url='https://github.com/newfies-dialer/python-msspeak',
     packages=[
-        'mstranslate',
+        'msspeak',
     ],
-    package_dir={'mstranslate':
-                 'mstranslate'},
+    package_dir={'msspeak':
+                 'msspeak'},
     include_package_data=True,
     install_requires=requirements,
     license="MIT",
@@ -43,7 +43,7 @@ setup(
     keywords='mstranslator,tts,speech',
     entry_points={
         'console_scripts': [
-            'mstranslate = mstranslate.command_line:main',
+            'msspeak = msspeak.command_line:main',
         ],
     },
     classifiers=[

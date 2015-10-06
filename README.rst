@@ -4,15 +4,15 @@ MSSpeak - Microsoft Translator Speak for Python
 
 :Author: Arezqui Belaid and Joshua Patten
 :Description: Microsoft Translator API module for Python
-:Documentation: RTD https://python-mstranslate.readthedocs.org
-:Contributors: `list of contributors <https://github.com/newfies-dialer/python-mstranslate/graphs/contributors>`_
+:Documentation: RTD https://python-msspeak.readthedocs.org
+:Contributors: `list of contributors <https://github.com/newfies-dialer/python-msspeak/graphs/contributors>`_
 :License: MIT
 
-.. image:: https://img.shields.io/travis/newfies-dialer/python-mstranslate.svg
-        :target: https://travis-ci.org/newfies-dialer/python-mstranslate
+.. image:: https://img.shields.io/travis/newfies-dialer/python-msspeak.svg
+        :target: https://travis-ci.org/newfies-dialer/python-msspeak
 
-.. image:: https://img.shields.io/pypi/v/python-mstranslate.svg
-        :target: https://pypi.python.org/pypi/python-mstranslate
+.. image:: https://img.shields.io/pypi/v/python-msspeak.svg
+        :target: https://pypi.python.org/pypi/python-msspeak
 
 
 Microsoft Translator Documentation: http://msdn.microsoft.com/en-us/library/dd576287.aspx
@@ -21,7 +21,7 @@ Microsoft Translator Documentation: http://msdn.microsoft.com/en-us/library/dd57
 Python Microsoft Speak
 ----------------------
 
-python-mstranslate is a library to produce a text-to-speech file using `Microsoft Translate`_ web services.
+python-msspeak is a library to produce a text-to-speech file using `Microsoft Translate`_ web services.
 
 In order to utilize this service you must sign up for Microsoft Translator service and register an application. More information on creating a Microsoft account is located at the `getting started with Microsoft Translator API`_ page.
 
@@ -29,20 +29,18 @@ In order to utilize this service you must sign up for Microsoft Translator servi
 Quickstart
 ----------
 
-A quick-and-dirty script to utilize the python-mstranslate library.
+A quick-and-dirty script to utilize the python-msspeak library.
 
 client_id is the Microsoft Translator API client_id, and client_secret is the Microsoft Translator API client_secret:
 ::
 
-    import mstranslate
+    import msspeak
 
     client_id = 'XXXXXXXXXXXX'
     client_secret = 'YYYYYYYYYYYYYY'
-    service_url = 'http://api.microsofttranslator.com/V2/Http.svc/Speak'
 
-    tts_mstranslate = mstranslate.MSTranslate(client_id, client_secret, service_url, '/tmp/')
-    tts_mstranslate.prepare("This is the text I will speak to you", "EN")
-    output_filename = tts_mstranslate.run()
+    tts_msspeak = msspeak.MSSpeak(client_id, client_secret, '/tmp/')
+    output_filename = tts_msspeak.speak("This is the text I will speak to you", "en")
 
     print "Recorded TTS to %s" % output_filename
 
@@ -56,11 +54,11 @@ Features
 Installation
 ------------
 
-Install, upgrade and uninstall python-mstranslate.py with these commands::
+Install, upgrade and uninstall python-msspeak.py with these commands::
 
-    $ pip install python-mstranslate
-    $ pip install --upgrade python-mstranslate
-    $ pip uninstall python-mstranslate
+    $ pip install python-msspeak
+    $ pip install --upgrade python-msspeak
+    $ pip uninstall python-msspeak
 
 
 Example usage and output
@@ -68,12 +66,12 @@ Example usage and output
 
 Usage:
 ::
-    $ python-mstranslate --client_id=<client_id> --client_secret=<client_secret> -t <text> [-d <directory>] [-url <service_url>] [-h]
+    $ python-msspeak --client_id=<client_id> --client_secret=<client_secret> -t <text> [-d <directory>] [-url <service_url>] [-h]
 
 
 Example:
 ::
-    $ mstranslate --client_id=XXXXXXXXX --client_secret=YYYYYYYYYY -t "Salut, Vous vous appelez comment?" -l fr
+    $ msspeak --client_id=XXXXXXXXX --client_secret=YYYYYYYYYY -t "Salut, Vous vous appelez comment?" -l fr
 
 Output :
 ::
@@ -85,7 +83,7 @@ Feedback
 
 Feedback are more than welcome, post bugs and feature requests on github:
 
-http://github.com/newfies-dialer/python-mstranslate/issues
+http://github.com/newfies-dialer/python-msspeak/issues
 
 
 Extra information
@@ -102,7 +100,7 @@ Source download
 
 The source code is currently available on github. Fork away!
 
-https://github.com/newfies-dialer/python-mstranslate
+https://github.com/newfies-dialer/python-msspeak
 
 
 API Methods

@@ -2,15 +2,15 @@
 # -*- coding: utf-8 -*-
 
 """
-test_python-mstranslate
+test_python-msspeak
 ----------------------------------
 
-Tests for `python-mstranslate` module.
+Tests for `python-msspeak` module.
 """
 
 import unittest
 
-from mstranslate.command_line import main
+from msspeak.command_line import main
 
 
 class TestConsole(unittest.TestCase):

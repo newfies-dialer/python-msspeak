@@ -13,7 +13,7 @@ Types of Contributions
 Report Bugs
 ~~~~~~~~~~~
 
-Report bugs at https://github.com/newfies-dialer/python-mstranslate/issues.
+Report bugs at https://github.com/newfies-dialer/python-msspeak/issues.
 
 If you are reporting a bug, please include:
 
@@ -36,14 +36,14 @@ is open to whoever wants to implement it.
 Write Documentation
 ~~~~~~~~~~~~~~~~~~~
 
-Python MStranslate could always use more documentation, whether as part of the
-official Python MStranslate docs, in docstrings, or even on the web in blog posts,
+Python MSSpeak could always use more documentation, whether as part of the
+official Python MSSpeak docs, in docstrings, or even on the web in blog posts,
 articles, and such.
 
 Submit Feedback
 ~~~~~~~~~~~~~~~
 
-The best way to send feedback is to file an issue at https://github.com/newfies-dialer/python-mstranslate/issues.
+The best way to send feedback is to file an issue at https://github.com/newfies-dialer/python-msspeak/issues.
 
 If you are proposing a feature:
 
@@ -55,17 +55,17 @@ If you are proposing a feature:
 Get Started!
 ------------
 
-Ready to contribute? Here's how to set up `python-mstranslate` for local development.
+Ready to contribute? Here's how to set up `python-msspeak` for local development.
 
-1. Fork the `python-mstranslate` repo on GitHub.
+1. Fork the `python-msspeak` repo on GitHub.
 2. Clone your fork locally::
 
-    $ git clone git@github.com:your_name_here/python-mstranslate.git
+    $ git clone git@github.com:your_name_here/python-msspeak.git
 
 3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
 
-    $ mkvirtualenv python-mstranslate
-    $ cd python-mstranslate/
+    $ mkvirtualenv python-msspeak
+    $ cd python-msspeak/
     $ python setup.py develop
 
 4. Create a branch for local development::
@@ -76,7 +76,7 @@ Ready to contribute? Here's how to set up `python-mstranslate` for local develop
 
 5. When you're done making changes, check that your changes pass flake8 and the tests, including testing other Python versions with tox::
 
-    $ flake8 python-mstranslate tests
+    $ flake8 python-msspeak tests
     $ python setup.py test
     $ tox
 
@@ -100,7 +100,7 @@ Before you submit a pull request, check that it meets these guidelines:
    your new functionality into a function with a docstring, and add the
    feature to the list in README.rst.
 3. The pull request should work for Python 2.6, 2.7, 3.3, and 3.4, and for PyPy. Check
-   https://travis-ci.org/newfies-dialer/python-mstranslate/pull_requests
+   https://travis-ci.org/newfies-dialer/python-msspeak/pull_requests
    and make sure that the tests pass for all supported Python versions.
 
 Tips
@@ -108,4 +108,4 @@ Tips
 
 To run a subset of tests::
 
-    $ python -m unittest tests.test_python-mstranslate
+    $ python -m unittest tests.test_python-msspeak
