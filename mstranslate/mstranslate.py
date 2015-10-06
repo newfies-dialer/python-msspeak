@@ -25,6 +25,8 @@
 
 import sys
 import os.path
+import time
+import requests
 try:
     import simplejson as json
 except ImportError:
@@ -44,33 +46,57 @@ else:
 # Version Python-MSTranslate
 __version__ = '0.1'
 
-CLIENT_ID = 'XXXXXXXXXXXX'
-CLIENT_SECRET = 'YYYYYYYYYYYYYY'
+client_id = 'XXXXXXXXXXXX'
+client_secret = 'YYYYYYYYYYYYYY'
 
-SERVICE_URL = 'http://api.microsofttranslator.com/V2/Http.svc/Speak'
-LANGUAGE = 'en'
-QUALITY = '22k'  # 22k, 8k, 8ka, 8kmu
-DIRECTORY = '/tmp/'
+service_url = 'http://api.microsofttranslator.com/V2/Http.svc/Speak'
+language = 'en'
+quality = '22k'  # 22k, 8k, 8ka, 8kmu
+directory = '/tmp/'
+
+
+class AuthenticationFailed(Exception):
+    def __init__(self, value):
+        self.value = value
+
+    def __str__(self):
+        return repr(self.value)
+
+
+class ArgumentException(Exception):
+    def __init__(self, value):
+        self.value = value
+
+    def __str__(self):
+        return repr(self.value)
 
 
 class MSTranslate(object):
     # Properties
-    TTS_ENGINE = None
-    CLIENT_ID = None
-    CLIENT_SECRET = None
-    SERVICE_URL = None
-    DIRECTORY = ''
-    data = {}
-    filename = None
     cache = True
 
-    def __init__(self, CLIENT_ID, CLIENT_SECRET, service_url, directory=''):
+    def __init__(self, client_id, client_secret, service_url, directory=''):
         """construct Microsoft Translate TTS"""
-        self.TTS_ENGINE = 'MSTRANSLATE'
-        self.CLIENT_ID = CLIENT_ID
-        self.CLIENT_SECRET = CLIENT_SECRET
-        self.SERVICE_URL = service_url
-        self.DIRECTORY = directory
+        self.tts_engine = 'MSTRANSLATE'
+        self.client_id = client_id
+        self.client_secret = client_secret
+        self.service_url = service_url
+        self.directory = directory
+        self.access_token = ''
+        self.data = {}
+        self.filename = None
+
+    def accessToken(self):
+        data = {'client_id': self.client_id, 'client_secret': self.client_secret,
+                'scope': 'http://api.microsofttranslator.com',
+                'grant_type': 'client_credentials'}
+        r = requests.post('https://datamarket.accesscontrol.windows.net/v2/OAuth2-13/', data=data)
+        result = json.loads(r.text)
+        if 'error_description' in result:
+            raise AuthenticationFailed(result['error_description'])
+        else:
+            self.access_token = result['access_token']
+            self.time = time.time()
 
     def prepare(self, textstr, lang):
         """
@@ -79,7 +105,7 @@ class MSTranslate(object):
         oauth_url = 'https://datamarket.accesscontrol.windows.net/v2/OAuth2-13'
         lang = lang.lower()
         concatkey = '%s-%s' % (textstr, lang)
-        key = self.TTS_ENGINE + '' + str(hash(concatkey))
+        key = self.tts_engine + '' + str(hash(concatkey))
 
         self.data = {
             'language': lang,
@@ -90,8 +116,8 @@ class MSTranslate(object):
         self.filename = '%s-%s.wav' % (key, lang)
         # Get access token
         tokenargs = {
-            'client_id': self.CLIENT_ID,
-            'client_secret': self.CLIENT_SECRET,
+            'client_id': self.client_id,
+            'client_secret': self.client_secret,
             'scope': 'http://api.microsofttranslator.com',
             'grant_type': 'client_credentials'
         }
@@ -116,15 +142,15 @@ class MSTranslate(object):
         """
 
         # check if file exists
-        fileloc = self.DIRECTORY + self.filename
-        if self.cache and os.path.isfile(self.DIRECTORY + self.filename):
+        fileloc = self.directory + self.filename
+        if self.cache and os.path.isfile(self.directory + self.filename):
             return self.filename
         else:
             encdata = parse.urlencode(self.data)
             gettts = urllib2.build_opener()
             gettts.addheaders = [('Authorization', 'Bearer ' + self.token)]
-            print self.SERVICE_URL + '/' + encdata
-            ttsfile = gettts.open(self.SERVICE_URL + '?' + encdata)
+            print self.service_url + '/' + encdata
+            ttsfile = gettts.open(self.service_url + '?' + encdata)
             finaloutput = ttsfile.read()
             if str(finaloutput[0:4]) != "RIFF":
                 print 'Error: File received was not a WAV file. Please check your credentials and try again'

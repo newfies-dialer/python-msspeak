@@ -26,7 +26,9 @@
 import sys
 from optparse import OptionParser
 from mstranslate import MSTranslate
-from mstranslate import DIRECTORY, SERVICE_URL, LANGUAGE
+from mstranslate import service_url
+from mstranslate import language as def_language
+from mstranslate import directory as def_directory
 
 
 USAGE = \
@@ -79,12 +81,12 @@ def main():
     validate_options(client_id, client_secret, text)
 
     if not directory:
-        directory = DIRECTORY
+        directory = def_directory
 
-    url = SERVICE_URL
+    url = service_url
 
     if not language:
-        language = LANGUAGE
+        language = def_language
 
     tts_mstranslate = MSTranslate(client_id, client_secret, url, directory)
     tts_mstranslate.set_cache(False)

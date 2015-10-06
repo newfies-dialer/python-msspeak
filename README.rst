@@ -31,16 +31,16 @@ Quickstart
 
 A quick-and-dirty script to utilize the python-mstranslate library.
 
-CLIENT_ID is the Microsoft Translator API client_id, and CLIENT_SECRET is the Microsoft Translator API client_secret:
+client_id is the Microsoft Translator API client_id, and client_secret is the Microsoft Translator API client_secret:
 ::
 
     import mstranslate
 
-    CLIENT_ID = 'XXXXXXXXXXXX'
-    CLIENT_SECRET = 'YYYYYYYYYYYYYY'
-    SERVICE_URL = 'http://api.microsofttranslator.com/V2/Http.svc/Speak'
+    client_id = 'XXXXXXXXXXXX'
+    client_secret = 'YYYYYYYYYYYYYY'
+    service_url = 'http://api.microsofttranslator.com/V2/Http.svc/Speak'
 
-    tts_mstranslate = mstranslate.MSTranslate(CLIENT_ID, CLIENT_SECRET, SERVICE_URL, '/tmp/')
+    tts_mstranslate = mstranslate.MSTranslate(client_id, client_secret, service_url, '/tmp/')
     tts_mstranslate.prepare("This is the text I will speak to you", "EN")
     output_filename = tts_mstranslate.run()
 
