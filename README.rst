@@ -61,6 +61,7 @@ Installation
 
 Install, upgrade and uninstall python-msspeak.py with these commands:
 ::
+
     $ pip install python-msspeak
     $ pip install --upgrade python-msspeak
     $ pip uninstall python-msspeak
@@ -71,14 +72,17 @@ Example usage and output
 
 Usage:
 ::
+
     $ python-msspeak --client_id=<client_id> --client_secret=<client_secret> -t <text> [-d <directory>] [-url <service_url>] [-h]
 
 Example:
 ::
+
     $ msspeak --client_id=XXXXXXXXX --client_secret=YYYYYYYYYY -t "Salut, Vous vous appelez comment?" -l fr
 
 Output :
 ::
+
     $ Recorded TTS to /tmp/MSTRANSLATE-8895934760117809679-fr.mp3
 
 
