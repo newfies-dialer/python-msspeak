@@ -5,7 +5,7 @@ MSSpeak - Microsoft Translator Speak for Python
 :Author: Arezqui Belaid and Joshua Patten
 :Description: Microsoft Translator API module for Python
 :Documentation: RTD https://python-msspeak.readthedocs.org
-:Contributors: `list of contributors <https://github.com/newfies-dialer/python-msspeak/graphs/contributors>`_
+:Contributors: https://github.com/newfies-dialer/python-msspeak/graphs/contributors
 :License: MIT
 
 .. image:: https://img.shields.io/travis/newfies-dialer/python-msspeak.svg
