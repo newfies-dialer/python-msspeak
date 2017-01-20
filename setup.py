@@ -15,7 +15,7 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read().replace('.. :changelog:', '')
 
 requirements = [
-    "requests==2.7.0",
+    "requests>=0.11.1,<3.0",
     "mstranslator==0.2.5",
 ]
 
