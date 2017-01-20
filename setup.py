@@ -11,8 +11,8 @@ except ImportError:
 with open('README.rst') as readme_file:
     readme = readme_file.read()
 
-with open('HISTORY.rst') as history_file:
-    history = history_file.read().replace('.. :changelog:', '')
+with open('CHANGELOG.rst') as changelog_file:
+    changelog = changelog_file.read().replace('.. :changelog:', '')
 
 requirements = [
     "requests>=0.11.1,<3.0",
@@ -27,7 +27,7 @@ setup(
     name='python-msspeak',
     version='0.1.3',
     description="Text-To-Speech with MSSpeak",
-    long_description=readme + '\n\n' + history,
+    long_description=readme + '\n\n' + changelog,
     author="Areski Belaid",
     author_email='areski@gmail.com',
     url='https://github.com/newfies-dialer/python-msspeak',
