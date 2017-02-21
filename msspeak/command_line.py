@@ -28,24 +28,21 @@ from optparse import OptionParser
 from msspeak import MSSpeak
 
 
-default_language = "en"
+default_language = "en-US"
+default_gender = "Female"
 default_directory = "/tmp/"
 
 
 USAGE = \
-    """\nUsage: msspeak --client_id=<client_id> --client_secret=<client_secret> -t <text> [-l <language>] [-d <directory>] [-h]"""
+    """\nUsage: msspeak --subscription_key=<subscription_key> -t <text> [-l <language>] [-g <gender>] [-d <directory>] [-h]"""
 
 
-def validate_options(client_id, client_secret, text):
+def validate_options(subscription_key, text):
     """
     Perform sanity checks on threshold values
     """
-    if not client_id or len(client_id) == 0:
-        print 'Error: Warning the option client_id should contain a string.'
-        print USAGE
-        sys.exit(3)
-    if not client_secret or len(client_secret) == 0:
-        print 'Error: Warning the option client_secret should contain a string.'
+    if not subscription_key or len(subscription_key) == 0:
+        print 'Error: Warning the option subscription_key should contain a string.'
         print USAGE
         sys.exit(3)
     if not text or len(text) == 0:
@@ -61,25 +58,25 @@ def main():
 
     # Parse arguments
     parser = OptionParser()
-    parser.add_option('-n', '--client_id', dest='client_id',
-                      help='client_id for authentication')
-    parser.add_option('-s', '--client_secret', dest='client_secret',
-                      help='client_secret for authentication')
+    parser.add_option('-n', '--subscription_key', dest='subscription_key',
+                      help='subscription_key for authentication')
     parser.add_option('-t', '--text', dest='text',
                       help='text to synthesize')
     parser.add_option('-l', '--language', dest='language',
                       help='language')
+    parser.add_option('-g', '--gender', dest='gender',
+                      help='gender')
     parser.add_option('-d', '--directory', dest='directory',
                       help='directory to store the file')
     (options, args) = parser.parse_args()
-    client_id = options.client_id
-    client_secret = options.client_secret
+    subscription_key = options.subscription_key
     text = options.text
     language = options.language
+    gender = options.gender
     directory = options.directory
 
     # Perform sanity checks on options
-    validate_options(client_id, client_secret, text)
+    validate_options(subscription_key, text)
 
     if not directory:
         directory = default_directory
@@ -87,9 +84,17 @@ def main():
     if not language:
         language = default_language
 
-    tts_msspeak = MSSpeak(client_id, client_secret, directory)
+    if not gender:
+        gender = default_gender
+
+    # format = 'riff-16khz-16bit-mono-pcm'
+    format = 'riff-8khz-8bit-mono-mulaw'
+
+    # lang = 'en-AU'
+    # gender = 'Female'
+    tts_msspeak = MSSpeak(subscription_key, '/tmp/')
     tts_msspeak.set_cache(False)
-    output_filename = tts_msspeak.speak(text, language)
+    output_filename = tts_msspeak.speak(text, language, gender, format)
 
     print 'Recorded TTS to %s%s' % (directory, output_filename)
 

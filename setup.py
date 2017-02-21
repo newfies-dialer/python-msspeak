@@ -16,7 +16,6 @@ with open('CHANGELOG.rst') as changelog_file:
 
 requirements = [
     "requests>=0.11.1,<3.0",
-    "mstranslator==0.2.5",
 ]
 
 test_requirements = [
@@ -25,7 +24,7 @@ test_requirements = [
 
 setup(
     name='python-msspeak',
-    version='0.1.5',
+    version='0.2.0',
     description="Text-To-Speech with MSSpeak",
     long_description=readme + '\n\n' + changelog,
     author="Areski Belaid",
