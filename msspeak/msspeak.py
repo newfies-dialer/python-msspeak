@@ -203,7 +203,7 @@ class MSSpeak(object):
         """
         Run will call Microsoft Translate API and and produce audio
         """
-        print("speak(textstr=%s, lang=%s, gender=%s, format=%s)" % (textstr, lang, gender, format))
+        # print("speak(textstr=%s, lang=%s, gender=%s, format=%s)" % (textstr, lang, gender, format))
         concatkey = '%s-%s-%s-%s' % (textstr, lang.lower(), gender.lower(), format)
         key = self.tts_engine + '' + str(hash(concatkey))
         self.filename = '%s-%s.wav' % (key, lang)
