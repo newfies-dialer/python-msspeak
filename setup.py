@@ -16,7 +16,6 @@ with open('CHANGELOG.rst') as changelog_file:
 
 requirements = [
     "requests>=0.11.1,<3.0",
-    "mstranslator==0.2.5",
 ]
 
 test_requirements = [
