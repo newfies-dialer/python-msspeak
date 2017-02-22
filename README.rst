@@ -22,11 +22,12 @@ https://www.microsoft.com/cognitive-services/en-us/speech-api/documentation/API-
 Python Bing Speech
 ------------------
 
-python-msspeak is a library to produce a text-to-speech file using `Microsoft Cognitive Services`_.
+python-msspeak is a library to synthesize text into human sounding speech
+using `Microsoft Cognitive Services`_.
 
-In order to utilize this service you must sign up for Microsoft Translator
+In order to utilize this service you must sign up for Microsoft Cognitive
 service and register an application. More information on creating a Microsoft
-account is located at the `getting started with Microsoft Translator API`_ page.
+account is located at the `getting started with Text to Speech`_ page.
 
 
 Quickstart
@@ -41,15 +42,9 @@ A quick-and-dirty script to utilize the python-msspeak library.
     subscription_key = 'XXXXXXXXXXXX'
 
     tts_msspeak = msspeak.MSSpeak(subscription_key, '/tmp/')
-    output_filename = tts_msspeak.speak("This is the text I will speak to you", "en")
+    output_filename = tts_msspeak.speak("This is the text I will speak to you", "en-US")
 
     print "Recorded TTS to %s" % output_filename
-
-
-Features
---------
-
-* Produce text to speech in different languages.
 
 
 Installation
@@ -94,10 +89,9 @@ Extra information
 
 Newfies-Dialer, an open source Auto Dialer software, uses this module to
 synthetize audio files being play to the end-user.
-Further information about Newfies-Dialer can be found at
-http://www.newfies-dialer.org
+Further information about Newfies-Dialer can be found at https://www.newfies-dialer.org
 
-This module is built and supported by Star2Billing: http://www.star2billing.com
+This module is built and supported by Star2Billing: https://www.star2billing.com
 
 
 Source download
@@ -106,7 +100,6 @@ Source download
 The source code is currently available on github. Fork away!
 
 https://github.com/newfies-dialer/python-msspeak
-
 
 
 Other libraries
@@ -118,7 +111,7 @@ Other libraries
 
 
 .. _Microsoft Cognitive Services: https://www.microsoft.com/cognitive-services/en-us/
-.. _getting started with Tet to Speech: https://www.microsoft.com/cognitive-services/en-us/speech-api
+.. _getting started with Text to Speech: https://www.microsoft.com/cognitive-services/en-us/speech-api
 
 
 TODO
