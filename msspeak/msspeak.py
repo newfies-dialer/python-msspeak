@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-# from __future__ import unicode_literals
 import requests
 import datetime
 import os
@@ -7,6 +6,10 @@ try:
     basestring
 except NameError:
     basestring = (str, bytes)
+
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 
 class AccessError(Exception):
@@ -84,6 +87,8 @@ class Speech(object):
     def make_request(self, action, headers, data):
         url = self.make_url(action)
         resp = requests.post(url, auth=self.auth, headers=headers, data=data)
+        # print(resp)
+        # import ipdb; ipdb.set_trace()
         # return self.make_response(resp)
         return resp
 
@@ -160,14 +165,14 @@ class Speech(object):
             raise LanguageException("Invalid language/gender combination: %s, %s" % (lang, gender))
 
         headers = {
-            "Content-type": "application/ssml+xml",
+            "Content-type": "application/ssml+xml; charset=utf-8",
             "X-Microsoft-OutputFormat": format,
             # "X-Search-AppId": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
             # "X-Search-ClientID": "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY",
             "User-Agent": "TTSForPython"
         }
 
-        body = "<speak version='1.0' xml:lang='%s'><voice xml:lang='%s' xml:gender='%s' name='%s'>%s</voice></speak>" % (lang, lang, gender, servicename, text)
+        body = "<speak version='1.0' xml:lang='%s'><voice xml:lang='%s' xml:gender='%s' name='%s'>%s</voice></speak>" % (lang, lang, gender, servicename, str(text.decode('utf-8')))
 
         return self.make_request('synthesize', headers, body)
 
@@ -204,7 +209,7 @@ class MSSpeak(object):
         Run will call Microsoft Translate API and and produce audio
         """
         # print("speak(textstr=%s, lang=%s, gender=%s, format=%s)" % (textstr, lang, gender, format))
-        concatkey = '%s-%s-%s-%s' % (textstr, lang.lower(), gender.lower(), format)
+        concatkey = '%s-%s-%s-%s' % (textstr.decode('utf-8'), lang.lower(), gender.lower(), format)
         key = self.tts_engine + '' + str(hash(concatkey))
         self.filename = '%s-%s.wav' % (key, lang)
 
