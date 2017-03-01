@@ -1,15 +1,17 @@
+#! /usr/bin/env python3
 # -*- coding: utf-8 -*-
+# fixed for python3 by lardconcepts 2017/03/01
 import requests
 import datetime
 import os
 try:
-    basestring
+    str
 except NameError:
-    basestring = (str, bytes)
+    str = (str, bytes)
 
-import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
+#import sys
+#reload(sys)
+#sys.setdefaultencoding('utf-8')
 
 
 class AccessError(Exception):
@@ -172,13 +174,13 @@ class Speech(object):
             "User-Agent": "TTSForPython"
         }
 
-        body = "<speak version='1.0' xml:lang='%s'><voice xml:lang='%s' xml:gender='%s' name='%s'>%s</voice></speak>" % (lang, lang, gender, servicename, str(text.decode('utf-8')))
+        body = "<speak version='1.0' xml:lang='%s'><voice xml:lang='%s' xml:gender='%s' name='%s'>%s</voice></speak>" % (lang, lang, gender, servicename, str(text))
 
         return self.make_request('synthesize', headers, body)
 
     def speak_to_file(self, file, *args, **kwargs):
         resp = self.speak(*args, **kwargs)
-        if isinstance(file, basestring):
+        if isinstance(file, str):
             with open(file, 'wb'):
                 file.write(resp.content)
         elif hasattr(file, 'write'):
@@ -209,9 +211,9 @@ class MSSpeak(object):
         Run will call Microsoft Translate API and and produce audio
         """
         # print("speak(textstr=%s, lang=%s, gender=%s, format=%s)" % (textstr, lang, gender, format))
-        concatkey = '%s-%s-%s-%s' % (textstr.decode('utf-8'), lang.lower(), gender.lower(), format)
+        concatkey = '%s-%s-%s-%s' % (textstr, lang.lower(), gender.lower(), format)
         key = self.tts_engine + '' + str(hash(concatkey))
-        self.filename = '%s-%s.wav' % (key, lang)
+        self.filename = '%s-%s.mp3' % (key, lang)
 
         # check if file exists
         fileloc = self.directory + self.filename
@@ -224,15 +226,15 @@ class MSSpeak(object):
             return False
 
 
-# if __name__ == "__main__":
-#     subscription_key = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-#     speech = Speech(subscription_key)
+if __name__ == "__main__":
+    subscription_key = 'XXXXXXXXXXXXXXXXXX'
+    speech = Speech(subscription_key)
 
-#     # format = 'riff-16khz-16bit-mono-pcm'
-#     format = 'riff-8khz-8bit-mono-mulaw'
-#     lang = 'en-AU'
-#     gender = 'Female'
-#     tts_msspeak = MSSpeak(subscription_key, '/tmp/')
-#     output_filename = tts_msspeak.speak("This is the text I will speak to you. but this message is definitly a longer text. how long is hard to tell but let s try until now.", lang, gender, format)
+    # format = 'riff-16khz-16bit-mono-pcm'
+    format = 'audio-16khz-64kbitrate-mono-mp3'
+    lang = 'en-GB'
+    gender = 'Female'
+    tts_msspeak = MSSpeak(subscription_key, '/tmp/')
+    output_filename = tts_msspeak.speak("Peter Piper Picked a peck of pickled peppers. Complicated words like R.N.I.B., macular degeneration, diabetes and retinitis pigmentosa could also be pronounced.", lang, gender, format)
 
-#     print "Recorded TTS to /tmp/%s" % output_filename
+    print ("Recorded TTS to /tmp/%s" % output_filename)
