@@ -1,17 +1,7 @@
-#! /usr/bin/env python3
 # -*- coding: utf-8 -*-
-# fixed for python3 by lardconcepts 2017/03/01
 import requests
 import datetime
 import os
-try:
-    str
-except NameError:
-    str = (str, bytes)
-
-#import sys
-#reload(sys)
-#sys.setdefaultencoding('utf-8')
 
 
 class AccessError(Exception):
@@ -89,24 +79,7 @@ class Speech(object):
     def make_request(self, action, headers, data):
         url = self.make_url(action)
         resp = requests.post(url, auth=self.auth, headers=headers, data=data)
-        # print(resp)
-        # import ipdb; ipdb.set_trace()
-        # return self.make_response(resp)
         return resp
-
-    # def make_response(self, resp):
-    #     resp.encoding = 'UTF-8-sig'
-    #     # print(resp)
-    #     # import ipdb; ipdb.set_trace()
-    #     data = resp.content
-
-    #     if isinstance(data, basestring) and data.startswith("ArgumentOutOfRangeException"):
-    #         raise ArgumentOutOfRangeException(data)
-
-    #     if isinstance(data, basestring) and data.startswith("TranslateApiException"):
-    #         raise TranslateApiException(data)
-
-    #     return data
 
     def speak(self, text, lang, gender, format):
         """
