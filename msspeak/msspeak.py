@@ -3,6 +3,10 @@ import requests
 import datetime
 import os
 
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 
 class AccessError(Exception):
     def __init__(self, response):
