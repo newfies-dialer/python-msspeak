@@ -125,7 +125,13 @@ class Speech(object):
             "zh-CN,Male": "Microsoft Server Speech Text to Speech Voice (zh-CN, Kangkang, Apollo)",
             "zh-HK,Male": "Microsoft Server Speech Text to Speech Voice (zh-HK, Danny, Apollo)",
             "zh-TW,Female": "Microsoft Server Speech Text to Speech Voice (zh-TW, Yating, Apollo)",
-            "zh-TW,Male": "Microsoft Server Speech Text to Speech Voice (zh-TW, Zhiwei, Apollo)"
+            "zh-TW,Male": "Microsoft Server Speech Text to Speech Voice (zh-TW, Zhiwei, Apollo)",
+            "nl-NL,Female": "Microsoft Server Speech Text to Speech Voice (nl-NL, HannaRUS)",
+            "id-ID,Male": "Microsoft Server Speech Text to Speech Voice (id-ID, Andika)",
+            "id-ID,Female": "Microsoft Server Speech Text to Speech Voice (id-ID, Andika)",
+            "ar-EG,Female": "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)",
+            "hi-IN,Female": "Microsoft Server Speech Text to Speech Voice (hi-IN, Kalpana)",
+            "ru-RU,Female": "Microsoft Server Speech Text to Speech Voice (ru-RU, Irina)"
         }
         if not gender:
             gender = 'Female'
