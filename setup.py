@@ -24,7 +24,7 @@ test_requirements = [
 
 setup(
     name='python-msspeak',
-    version='0.3.2',
+    version='0.4.0',
     description="Text-To-Speech with MSSpeak",
     long_description=readme + '\n\n' + changelog,
     author="Areski Belaid",

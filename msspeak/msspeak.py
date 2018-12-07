@@ -34,10 +34,12 @@ class LanguageException(Exception):
 
 
 class AccessToken(object):
-    access_url = "https://api.cognitive.microsoft.com/sts/v1.0/issueToken"
+    access_url = "https://eastus.api.cognitive.microsoft.com/sts/v1.0/issueToken"
     expire_delta = datetime.timedelta(minutes=9)  # speech API valid for 10 minutes, actually
 
-    def __init__(self, subscription_key):
+    def __init__(self, subscription_key, region = 'eastus'):
+        if region != 'eastus':
+            self.access_url = self.access_url.replace('eastus', region)
         self.subscription_key = subscription_key
         self._token = None
         self._expdate = None
@@ -72,17 +74,16 @@ class Speech(object):
     """
     Implements API for the Bing Speech service
     """
-    api_url = "https://speech.platform.bing.com/"
+    region = 'eastus'
+    api_url = "https://eastus.tts.speech.microsoft.com/cognitiveservices/v1"
 
-    def __init__(self, subscription_key):
-        self.auth = AccessToken(subscription_key)
+    def __init__(self, subscription_key, region = 'eastus'):
+        if region != 'eastus':
+            self.api_url = self.api_url.replace('eastus', region)
+        self.auth = AccessToken(subscription_key, region)
 
-    def make_url(self, action):
-        return self.api_url + action
-
-    def make_request(self, action, headers, data):
-        url = self.make_url(action)
-        resp = requests.post(url, auth=self.auth, headers=headers, data=data)
+    def make_request(self, headers, data):
+        resp = requests.post(self.api_url, auth=self.auth, headers=headers, data=data)
         return resp
 
     def speak(self, text, lang, gender, format):
@@ -159,7 +160,7 @@ class Speech(object):
 
         body = "<speak version='1.0' xml:lang='%s'><voice xml:lang='%s' xml:gender='%s' name='%s'>%s</voice></speak>" % (lang, lang, gender, servicename, str(text))
 
-        return self.make_request('synthesize', headers, body)
+        return self.make_request(headers, body)
 
     def speak_to_file(self, file, *args, **kwargs):
         resp = self.speak(*args, **kwargs)
@@ -176,9 +177,9 @@ class MSSpeak(object):
 
     cache = True
 
-    def __init__(self, subscription_key, directory=''):
+    def __init__(self, subscription_key, directory='', region='eastus'):
         """construct Microsoft Translate TTS"""
-        self.speech = Speech(subscription_key)
+        self.speech = Speech(subscription_key, region=region)
         self.tts_engine = 'bing_speech'
         self.directory = directory
         self.filename = None
