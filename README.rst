@@ -37,14 +37,14 @@ A quick-and-dirty script to utilize the python-msspeak library.
 
 ::
 
-    import msspeak
+    from msspeak import msspeak
 
     subscription_key = 'XXXXXXXXXXXX'
 
     tts_msspeak = msspeak.MSSpeak(subscription_key, '/tmp/')
     output_filename = tts_msspeak.speak("This is the text I will speak to you", "en-US")
 
-    print "Recorded TTS to %s" % output_filename
+    print ("Recorded TTS to %s" % output_filename)
 
 
 Installation
