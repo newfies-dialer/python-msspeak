@@ -2,6 +2,7 @@
 import requests
 import datetime
 import os
+from voices import find_voice
 
 import sys
 reload(sys)
@@ -94,46 +95,8 @@ class Speech(object):
         :param lang: Language to be spoken
         :param gender: Gender of the speaker
         :param format: File format (see link below)
-
-        Name maps and file format specifications can be found here:
-        https://www.microsoft.com/cognitive-services/en-us/speech-api/documentation/api-reference-rest/bingvoiceoutput
         """
 
-        namemap = {
-            "ar-EG,Female": "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)",
-            "de-DE,Female": "Microsoft Server Speech Text to Speech Voice (de-DE, Hedda)",
-            "de-DE,Male": "Microsoft Server Speech Text to Speech Voice (de-DE, Stefan, Apollo)",
-            "en-AU,Female": "Microsoft Server Speech Text to Speech Voice (en-AU, Catherine)",
-            "en-CA,Female": "Microsoft Server Speech Text to Speech Voice (en-CA, Linda)",
-            "en-GB,Female": "Microsoft Server Speech Text to Speech Voice (en-GB, Susan, Apollo)",
-            "en-GB,Male": "Microsoft Server Speech Text to Speech Voice (en-GB, George, Apollo)",
-            "en-IN,Male": "Microsoft Server Speech Text to Speech Voice (en-IN, Ravi, Apollo)",
-            "en-US,Male": "Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)",
-            "en-US,Female": "Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)",
-            "es-ES,Female": "Microsoft Server Speech Text to Speech Voice (es-ES, Laura, Apollo)",
-            "es-ES,Male": "Microsoft Server Speech Text to Speech Voice (es-ES, Pablo, Apollo)",
-            "es-MX,Male": "Microsoft Server Speech Text to Speech Voice (es-MX, Raul, Apollo)",
-            "fr-CA,Female": "Microsoft Server Speech Text to Speech Voice (fr-CA, Caroline)",
-            "fr-FR,Female": "Microsoft Server Speech Text to Speech Voice (fr-FR, Julie, Apollo)",
-            "fr-FR,Male": "Microsoft Server Speech Text to Speech Voice (fr-FR, Paul, Apollo)",
-            "it-IT,Male": "Microsoft Server Speech Text to Speech Voice (it-IT, Cosimo, Apollo)",
-            "ja-JP,Female": "Microsoft Server Speech Text to Speech Voice (ja-JP, Ayumi, Apollo)",
-            "ja-JP,Male": "Microsoft Server Speech Text to Speech Voice (ja-JP, Ichiro, Apollo)",
-            "pt-BR,Male": "Microsoft Server Speech Text to Speech Voice (pt-BR, Daniel, Apollo)",
-            "ru-RU,Female": "Microsoft Server Speech Text to Speech Voice (ru-RU, Irina, Apollo)",
-            "ru-RU,Male": "Microsoft Server Speech Text to Speech Voice (ru-RU, Pavel, Apollo)",
-            "zh-CN,Female": "Microsoft Server Speech Text to Speech Voice (zh-CN, HuihuiRUS)",
-            "zh-CN,Male": "Microsoft Server Speech Text to Speech Voice (zh-CN, Kangkang, Apollo)",
-            "zh-HK,Male": "Microsoft Server Speech Text to Speech Voice (zh-HK, Danny, Apollo)",
-            "zh-TW,Female": "Microsoft Server Speech Text to Speech Voice (zh-TW, Yating, Apollo)",
-            "zh-TW,Male": "Microsoft Server Speech Text to Speech Voice (zh-TW, Zhiwei, Apollo)",
-            "nl-NL,Female": "Microsoft Server Speech Text to Speech Voice (nl-NL, HannaRUS)",
-            "id-ID,Male": "Microsoft Server Speech Text to Speech Voice (id-ID, Andika)",
-            "id-ID,Female": "Microsoft Server Speech Text to Speech Voice (id-ID, Andika)",
-            "ar-EG,Female": "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)",
-            "hi-IN,Female": "Microsoft Server Speech Text to Speech Voice (hi-IN, Kalpana)",
-            "ru-RU,Female": "Microsoft Server Speech Text to Speech Voice (ru-RU, Irina)"
-        }
         if not gender:
             gender = 'Female'
         else:
@@ -142,24 +105,20 @@ class Speech(object):
         if not lang:
             lang = 'en-US'
 
+        voice = find_voice(locale=lang, gender=gender, neural=True)
+        if not voice:
+            raise LanguageException("Invalid language/gender combination: %s, %s" % (lang, gender))
+
         if not format:
             format = 'riff-8khz-8bit-mono-mulaw'
-
-        try:
-            servicename = namemap[lang + ',' + gender]
-        except (Exception):
-            raise LanguageException("Invalid language/gender combination: %s, %s" % (lang, gender))
 
         headers = {
             "Content-type": "application/ssml+xml; charset=utf-8",
             "X-Microsoft-OutputFormat": format,
-            # "X-Search-AppId": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-            # "X-Search-ClientID": "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY",
             "User-Agent": "TTSForPython"
         }
 
-        body = "<speak version='1.0' xml:lang='%s'><voice xml:lang='%s' xml:gender='%s' name='%s'>%s</voice></speak>" % (lang, lang, gender, servicename, str(text))
-
+        body = "<speak version='1.0' xml:lang='%s'><voice xml:lang='%s' xml:gender='%s' name='%s'>%s</voice></speak>" % (lang, lang, gender, voice['Name'], str(text))
         return self.make_request(headers, body)
 
     def speak_to_file(self, file, *args, **kwargs):
