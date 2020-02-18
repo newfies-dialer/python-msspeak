@@ -13,7 +13,12 @@ class AccessError(Exception):
     def __init__(self, response):
         self.status_code = response.status_code
         data = response.json()
-        super(AccessError, self).__init__(data["message"])
+        error_msg = ""
+        if "message" in data:
+            error_msg = data["message"]
+        elif "error" in data:
+            error_msg = data["error"]["message"]
+        super(AccessError, self).__init__(error_msg)
 
 
 class ArgumentOutOfRangeException(Exception):
