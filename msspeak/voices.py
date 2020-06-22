@@ -532,8 +532,8 @@ AZURE_VOICES = [
         "Locale": "es-MX"
     },
     {
-        "Name": "Microsoft Server Speech Text to Speech Voice (pt-BR, HeloisaNeural)",
-        "ShortName": "pt-BR-HeloisaNeural",
+        "Name": "Microsoft Server Speech Text to Speech Voice (pt-BR, FranciscaNeural)",
+        "ShortName": "pt-BR-FranciscaNeural",
         "Gender": "Female",
         "Locale": "pt-BR"
     }
