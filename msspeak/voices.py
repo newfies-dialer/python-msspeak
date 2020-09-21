@@ -118,6 +118,12 @@ AZURE_VOICES = [
         "Locale": "en-GB"
     },
     {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-GB, LibbyNeural)",
+        "ShortName": "en-GB-LibbyNeural",
+        "Gender": "Female",
+        "Locale": "en-GB"
+    },
+    {
         "Name": "Microsoft Server Speech Text to Speech Voice (en-IE, Sean)",
         "ShortName": "en-IE-Sean",
         "Gender": "Male",
@@ -538,6 +544,7 @@ AZURE_VOICES = [
         "Locale": "pt-BR"
     }
 ]
+
 
 def find_voice(locale, gender, neural=True):
     """
