@@ -232,20 +232,14 @@ AZURE_VOICES = [
         "Locale": "fr-CH"
     },
     {
-        "Name": "Microsoft Server Speech Text to Speech Voice (fr-FR, HortenseRUS)",
-        "ShortName": "fr-FR-HortenseRUS",
+        "Name": "Microsoft Server Speech Text to Speech Voice (fr-FR, DeniseNeural)",
+        "ShortName": "fr-FR-DeniseNeural",
         "Gender": "Female",
         "Locale": "fr-FR"
     },
     {
-        "Name": "Microsoft Server Speech Text to Speech Voice (fr-FR, Julie, Apollo)",
-        "ShortName": "fr-FR-Julie-Apollo",
-        "Gender": "Female",
-        "Locale": "fr-FR"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (fr-FR, Paul, Apollo)",
-        "ShortName": "fr-FR-Paul-Apollo",
+        "Name": "Microsoft Server Speech Text to Speech Voice (fr-FR, HenriNeural)",
+        "ShortName": "fr-FR-HenriNeural",
         "Gender": "Male",
         "Locale": "fr-FR"
     },
