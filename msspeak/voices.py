@@ -118,6 +118,12 @@ AZURE_VOICES = [
         "Locale": "en-GB"
     },
     {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-GB, LibbyNeural)",
+        "ShortName": "en-GB-LibbyNeural",
+        "Gender": "Female",
+        "Locale": "en-GB"
+    },
+    {
         "Name": "Microsoft Server Speech Text to Speech Voice (en-IE, Sean)",
         "ShortName": "en-IE-Sean",
         "Gender": "Male",
@@ -226,20 +232,14 @@ AZURE_VOICES = [
         "Locale": "fr-CH"
     },
     {
-        "Name": "Microsoft Server Speech Text to Speech Voice (fr-FR, HortenseRUS)",
-        "ShortName": "fr-FR-HortenseRUS",
+        "Name": "Microsoft Server Speech Text to Speech Voice (fr-FR, DeniseNeural)",
+        "ShortName": "fr-FR-DeniseNeural",
         "Gender": "Female",
         "Locale": "fr-FR"
     },
     {
-        "Name": "Microsoft Server Speech Text to Speech Voice (fr-FR, Julie, Apollo)",
-        "ShortName": "fr-FR-Julie-Apollo",
-        "Gender": "Female",
-        "Locale": "fr-FR"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (fr-FR, Paul, Apollo)",
-        "ShortName": "fr-FR-Paul-Apollo",
+        "Name": "Microsoft Server Speech Text to Speech Voice (fr-FR, HenriNeural)",
+        "ShortName": "fr-FR-HenriNeural",
         "Gender": "Male",
         "Locale": "fr-FR"
     },
@@ -532,12 +532,13 @@ AZURE_VOICES = [
         "Locale": "es-MX"
     },
     {
-        "Name": "Microsoft Server Speech Text to Speech Voice (pt-BR, HeloisaNeural)",
-        "ShortName": "pt-BR-HeloisaNeural",
+        "Name": "Microsoft Server Speech Text to Speech Voice (pt-BR, FranciscaNeural)",
+        "ShortName": "pt-BR-FranciscaNeural",
         "Gender": "Female",
         "Locale": "pt-BR"
     }
 ]
+
 
 def find_voice(locale, gender, neural=True):
     """
