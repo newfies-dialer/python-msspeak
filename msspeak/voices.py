@@ -100,27 +100,15 @@ AZURE_VOICES = [
         "Locale": "en-CA"
     },
     {
-        "Name": "Microsoft Server Speech Text to Speech Voice (en-GB, George, Apollo)",
-        "ShortName": "en-GB-George-Apollo",
-        "Gender": "Male",
-        "Locale": "en-GB"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (en-GB, HazelRUS)",
-        "ShortName": "en-GB-HazelRUS",
-        "Gender": "Female",
-        "Locale": "en-GB"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (en-GB, Susan, Apollo)",
-        "ShortName": "en-GB-Susan-Apollo",
-        "Gender": "Female",
-        "Locale": "en-GB"
-    },
-    {
         "Name": "Microsoft Server Speech Text to Speech Voice (en-GB, LibbyNeural)",
         "ShortName": "en-GB-LibbyNeural",
         "Gender": "Female",
+        "Locale": "en-GB"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-GB, RyanNeural)",
+        "ShortName": "en-GB-RyanNeural",
+        "Gender": "Male",
         "Locale": "en-GB"
     },
     {
@@ -148,32 +136,14 @@ AZURE_VOICES = [
         "Locale": "en-IN"
     },
     {
-        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)",
-        "ShortName": "en-US-BenjaminRUS",
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, GuyNeural)",
+        "ShortName": "en-US-GuyNeural",
         "Gender": "Male",
         "Locale": "en-US"
     },
     {
-        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)",
-        "ShortName": "en-US-Guy24kRUS",
-        "Gender": "Male",
-        "Locale": "en-US"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)",
-        "ShortName": "en-US-JessaRUS",
-        "Gender": "Female",
-        "Locale": "en-US"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)",
-        "ShortName": "en-US-Jessa24kRUS",
-        "Gender": "Female",
-        "Locale": "en-US"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)",
-        "ShortName": "en-US-ZiraRUS",
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, JennyNeural)",
+        "ShortName": "en-US-JennyNeural",
         "Gender": "Female",
         "Locale": "en-US"
     },
